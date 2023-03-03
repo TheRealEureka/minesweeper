@@ -1,6 +1,5 @@
 //SETTINGS
-//BUG Peux flag une case déjà dévoilée
-//Bug calcul des mines autour
+
 let grid_size = 20;
 let mine_count = 30;
 
@@ -45,8 +44,11 @@ function flag(x,y){
             gridArray[x][y].classList.remove('flag');
             flagCount--;
         }else{
-            gridArray[x][y].classList.add('flag');
-            flagCount++;
+            if(!gridArray[x][y].classList.contains('active'))
+            {
+                gridArray[x][y].classList.add('flag');
+                flagCount++;
+            }
         }
         document.getElementById('flag-count').innerText = flagCount + '/' + mine_count;
     }
