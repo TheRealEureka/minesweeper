@@ -1,0 +1,86 @@
+#grid {
+    width: 500px;
+    height: 500px;
+    background: #fff;
+    display: grid;
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+.grid-item {
+    background: #d7d7d7;
+    border: 1px solid #afafaf;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.grid-item>p{
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+.active {
+    background: transparent;
+}
+.grid-item:hover:not(.active):not(.mine-active):not(.flag) {
+    background: #c4c4c4;
+}
+.flag {
+    background: #d7d7d7 url("../img/flag.png") no-repeat center center;
+}
+.mine-active{
+    background: #d7d7d7 url("../img/mine.png") no-repeat center center;
+}
+.loose-case{
+    background-color : #ff0000;
+}
+
+
+#flag-btn{
+    border: 1px solid #afafaf;
+    cursor: pointer;
+
+}
+#flag-btn:hover{
+    background: #c4c4c4;
+}
+#flag-btn > img{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.panel {
+    margin-top: 10px;
+    padding: 5px;
+    width: 500px;
+    height: 50px;
+    background: #d7d7d7;
+    border-radius: 10px;
+}
+
+.panel > div{
+    display: inline-block;
+    margin: 0 10px;
+}
+.panel-right{
+    margin-left: 30px;
+    padding: 10px;
+    border-radius: 10px;
+
+    background: #d7d7d7;
+
+}
+.main {
+    display: flex;
+    flex-direction: row;
+}
