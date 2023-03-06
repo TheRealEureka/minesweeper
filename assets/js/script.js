@@ -18,6 +18,10 @@ function newGame(){
     let grid = document.getElementById('grid');
     grid.style.gridTemplateColumns = 'repeat(' + grid_size + ', 1fr)';
     grid.style.gridTemplateRows = 'repeat(' + grid_size + ', 1fr)';
+    if(grid_size > 20){
+        grid.style.width = '1000px';
+        grid.style.height = '1000px';
+    }
     document.getElementById('flag-count').innerText = flagCount + '/' + mine_count;
     grid.innerHTML = '';
     for (let i = 0; i < grid_size; i++) {
@@ -160,7 +164,7 @@ function reset(){
     let w = document.getElementById('width').value;
     let m = document.getElementById('mines').value;
     gridArray = [];
-    if(w > 0 && m > 0 && w <= 20 && m <= 50){
+    if(w > 0 && m > 10 && w <= 40 && m <= 150){
         grid_size = w;
         mine_count = m;
     }
