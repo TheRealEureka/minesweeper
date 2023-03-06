@@ -92,12 +92,13 @@ function unfuse(x,y){
         }else{
             defuseNear(x,y);
         }
+        checkWin();
     }
 }
 }
 function checkWin(){
     let count = document.querySelectorAll('.active').length;
-    if(count === (grid_size * grid_size) - mine_count){
+    if(canDefuse && count === (grid_size * grid_size) - mine_count){
         canDefuse = false;
         stopTimer = true;
         alert('Vous avez gagné !');
