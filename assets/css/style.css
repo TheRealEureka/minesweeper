@@ -1,7 +1,6 @@
 #grid {
     width: 500px;
     height: 500px;
-    background: #fff;
     display: grid;
     min-height: 0;
     min-width: 0;
@@ -31,6 +30,8 @@
 .active {
     background: transparent;
 }
+
+
 .grid-item:hover:not(.active):not(.mine-active):not(.flag) {
     background: #c4c4c4;
 }
