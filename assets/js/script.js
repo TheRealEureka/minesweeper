@@ -88,11 +88,20 @@ function unfuse(x,y){
                default:
                     gridArray[x][y].style = 'color: maroon';
             }
+
         }else{
             defuseNear(x,y);
         }
     }
 }
+}
+function checkWin(){
+    let count = document.querySelectorAll('.active').length;
+    if(count === (grid_size * grid_size) - mine_count){
+        canDefuse = false;
+        stopTimer = true;
+        alert('Vous avez gagné !');
+    }
 }
 function defuseNear(x,y){
     for(let i = -1; i < 2; i++){
@@ -146,7 +155,34 @@ function startTimer(){
         setTimeout(startTimer, 1000);
     }
 }
+function reset(){
+    let w = document.getElementById('width').value;
+    let m = document.getElementById('mines').value;
+    gridArray = [];
+    if(w > 0 && m > 0 && w <= 20 && m <= 50){
+        grid_size = w;
+        mine_count = m;
+    }
+    else{
+        document.getElementById('width').value = 15;
+        document.getElementById('mines').value = 30;
+        grid_size = 15;
+        mine_count = 30;
+    }
+    if(stopTimer === true){
+        stopTimer = false;
+        startTimer();
 
+    }
+    time = {
+        second: 0,
+        minute: 0,
+    };
+    flagCount = 0;
+    flagMode = false;
+    canDefuse = true;
+    newGame();
+}
 document.addEventListener('DOMContentLoaded', function() {
     newGame();
     startTimer();
@@ -161,32 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     document.getElementById('reset-btn').addEventListener('click', () => {
-        let w = document.getElementById('width').value;
-        let m = document.getElementById('mines').value;
-        gridArray = [];
-        if(w > 0 && m > 0 && w <= 20 && m <= 50){
-            grid_size = w;
-            mine_count = m;
-        }
-        else{
-            document.getElementById('width').value = 15;
-            document.getElementById('mines').value = 30;
-            grid_size = 15;
-            mine_count = 30;
-        }
-        if(stopTimer === true){
-        stopTimer = false;
-            startTimer();
-
-        }
-        time = {
-            second: 0,
-            minute: 0,
-        };
-        flagCount = 0;
-        flagMode = false;
-        canDefuse = true;
-        newGame();
+       reset();
 
     });
 });
